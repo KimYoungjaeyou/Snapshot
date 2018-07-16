@@ -105,6 +105,7 @@
                                         <colgroup>
                                             <col style="width:14%">
                                             <col style="width:10%">
+																						<col style="width:14%">
                                             <col style="width:14%">
                                             <col style="width:10%">
                                         </colgroup>
@@ -112,14 +113,23 @@
                                             <tr>
                                                 <th><a href="#">상품번호 <i class="fa fa-angle-down" aria-hidden="true"></i></a></th>
                                                 <th><a href="#">상품상태<i class="fa fa-angle-down" aria-hidden="true"></i></a></th>
-                                                <th><a href="#">상품 생성시간<i class="fa fa-angle-down" aria-hidden="true"></i></a></th>
-                                                <th><a href="#">상품 삭제시간<i class="fa fa-angle-down" aria-hidden="true"></i></a></th>
+																								<th><a href="#">상품상태코드<i class="fa fa-angle-down" aria-hidden="true"></i></a></th>
+                                                <th><a href="#">상품 생성 요청시간<i class="fa fa-angle-down" aria-hidden="true"></i></a></th>
+                                                <th><a href="#">상품 삭제 요청시간<i class="fa fa-angle-down" aria-hidden="true"></i></a></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+																						<tr>
+																								<td>123456789</td>
+																								<td>미존재</td>
+																								<td>999 auth오류</td>
+																								<td>2018-07-10 12:40</td>
+																								<td> 	</td>
+																						</tr>
                                             <tr>
                                                 <td>123456789</td>
                                                 <td>생성</td>
+																								<td>200 정상생성</td>
                                                 <td>2018-07-11 11:30</td>
                                                 <td> 	</td>
                                             </tr>
@@ -147,51 +157,53 @@
 		                            <div class="accordion-content">
 		                                <table class="type-vertical">
 		                                        <colgroup>
-		                                            <col style="width:14%">
-		                                            <col style="width:10%">
-		                                            <col style="width:14%">
-		                                            <col style="width:10%">
+		                                            <col style="width:50%">
+		                                            <col style="width:50%">
 		                                        </colgroup>
 		                                        <thead>
 		                                            <tr>
 		                                                <th>호출API</th>
-		                                                <th>기간설정</th>
-		                                                <th>기간설정</th>
-		                                                <th>건수</th>
+		                                                <th>API요청건수</th>
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
 		                                            <tr>
-		                                                <td>
-																											<div class="select size-lg"><!-- option 값의 최대 글자 수에 맞게 넓이 지정  -->
-																			                <label for="select1-1" class="trigger"><span>선택</span><i class="fa fa-angle-down"></i></label>
-																			                <select id="select1-1">
-																													    <option value="" selected>선택</option>
-																			                        <option value="">생성</option>
-																			                        <option value="">조회</option>
-																			                        <option value="">삭제</option>
-																			                    </select>
-																			            		</div>
+		       																						<td>생성</td>
+			                                                <td>1,200,000</td>
+																											<td> </td>
 																										</td>
-		                                                <td>
-																											<span class="datepicker">
-																					            	<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
-																					            	<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
-																					            </span>
-
-																										<td>
-																											<span class="datepicker">
-																					            	<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
-																					            	<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
-																					            </span>
-																										</td>
-		                                                <td> 	</td>
 		                                            </tr>
+																								<tr>
+																										<td>조회</td>
+																										<td>1,100,000</td>
+																										<td> </td>
+																									</td>
+																								</tr>
+																								<tr>
+																										<td>삭제</td>
+																										<td>100,000</td>
+																										<td> </td>
+																									</td>
+																								</tr>
 		                                        </tbody>
 		                                    </table>
 		                                </div>
 		                            </div>
 		                            <!--  //accordion  -->
+																<div class="center-align">
+																<td>
+																	<span class="datepicker">
+																		<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
+																		<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
+																	</span>
+
+																<td>
+																	<span class="datepicker">
+																		<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
+																		<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
+																	</span>
+																</td>
+																</div>
 																<div class="reverse">
 																				<form> <!-- form tag 상황에 맞게 사용  -->
 																						<button type="button" class="btn-search" style="width: 54px;height: 54px;font-size: 18px;color: #fff;background-color: #ea0530;cursor: pointer;"><i class="fa fa-search"></i></button>
@@ -207,52 +219,55 @@
 				                            </div>
 
 				                            <div class="accordion-content">
-				                                <table class="type-vertical">
-				                                        <colgroup>
-				                                            <col style="width:14%">
-				                                            <col style="width:10%">
-				                                            <col style="width:14%">
-				                                            <col style="width:10%">
-				                                        </colgroup>
-				                                        <thead>
-				                                            <tr>
-				                                                <th>호출API</th>
-				                                                <th>기간설정</th>
-				                                                <th>기간설정</th>
-				                                                <th>건수</th>
-				                                            </tr>
-				                                        </thead>
-				                                        <tbody>
-				                                            <tr>
-				                                                <td>
-																													<div class="select size-lg"><!-- option 값의 최대 글자 수에 맞게 넓이 지정  -->
-																					                <label for="select1-1" class="trigger"><span>선택</span><i class="fa fa-angle-down"></i></label>
-																					                <select id="select1-1">
-																															    <option value="" selected>선택</option>
-																					                        <option value="">생성</option>
-																					                        <option value="">조회</option>
-																					                        <option value="">삭제</option>
-																					                    </select>
-																					            		</div>
-																												</td>
-				                                                <td>
-																													<span class="datepicker">
-																							            	<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
-																							            	<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
-																							            </span>
+																			<table class="type-vertical">
+			                                        <colgroup>
+			                                            <col style="width:50%">
+			                                            <col style="width:50%">
+			                                        </colgroup>
+			                                        <thead>
+			                                            <tr>
+			                                                <th>호출API</th>
+			                                                <th>상품요청건수</th>
+			                                            </tr>
+			                                        </thead>
+			                                        <tbody>
+			                                            <tr>
+			       																						<td>생성</td>
+				                                                <td>5,200,000</td>
+																												<td> </td>
+																											</td>
+			                                            </tr>
+																									<tr>
+																											<td>조회</td>
+																											<td>4,100,000</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>삭제</td>
+																											<td>800,000</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+			                                        </tbody>
+			                                    </table>
+			                                </div>
+			                            </div>
+			                            <!--  //accordion  -->
+																	<div class="center-align">
+																	<td>
+																		<span class="datepicker">
+																			<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
+																			<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
+																		</span>
 
-																												<td>
-																													<span class="datepicker">
-																							            	<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
-																							            	<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
-																							            </span>
-																												</td>
-				                                                <td> 	</td>
-				                                            </tr>
-				                                        </tbody>
-				                                    </table>
-				                                </div>
-				                            </div>
+																	<td>
+																		<span class="datepicker">
+																			<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
+																			<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
+																		</span>
+																	</td>
+																	</div>
 				                            <!--  //accordion  -->
 																		<div class="reverse">
 																						<form> <!-- form tag 상황에 맞게 사용  -->
@@ -268,65 +283,116 @@
 				                            </div>
 
 				                            <div class="accordion-content">
-				                                <table class="type-vertical">
-				                                        <colgroup>
-				                                            <col style="width:14%">
-				                                            <col style="width:10%">
-				                                            <col style="width:14%">
-				                                            <col style="width:10%">
-				                                        </colgroup>
-				                                        <thead>
-				                                            <tr>
-				                                                <th>에러코드</th>
-				                                                <th>기간설정</th>
-				                                                <th>기간설정</th>
-				                                                <th>건수</th>
-				                                            </tr>
-				                                        </thead>
-				                                        <tbody>
-				                                            <tr>
-				                                                <td>
-																													<div class="select size-lg"><!-- option 값의 최대 글자 수에 맞게 넓이 지정  -->
-																					                <label for="select1-1" class="trigger"><span>선택</span><i class="fa fa-angle-down"></i></label>
-																					                <select id="select1-1">
-																															    <option value="" selected>선택</option>
-																					                        <option value="">999 auth오류</option>
-																					                        <option value="">801 Size1000이상</option>
-																																	<option value="">500 Timeout오류</option>
-																																	<option value="">800 redis오류</option>
-																																	<option value="">901 ProdNo누락</option>
-																																	<option value="">902 loadTimeout누락</option>
-																																	<option value="">903 tileHeight누락</option>
-																																	<option value="">904 tileWidth누락</option>
-																					                        <option value="">905 url누락</option>
-																																	<option value="">906 format누락</option>
-																																	<option value="">907 prefix누락</option>
-																																	<option value="">908 imgLoc누락</option>
-																																	<option value="">909 quality누락</option>
-																																	<option value="">910 isLimitTraget누락</option>
-																																	<option value="">911 priority누락</option>
-																																	<option value="">912 env누락</option>
-																					                    </select>
-																					            		</div>
-																												</td>
-				                                                <td>
-																													<span class="datepicker">
-																							            	<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
-																							            	<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
-																							            </span>
+																			<table class="type-vertical">
+			                                        <colgroup>
+			                                            <col style="width:50%">
+			                                            <col style="width:50%">
+			                                        </colgroup>
+			                                        <thead>
+			                                            <tr>
+			                                                <th>오류코드</th>
+			                                                <th>에러건수</th>
+			                                            </tr>
+			                                        </thead>
+			                                        <tbody>
+			                                            <tr>
+			       																						<td>999 auth오류</td>
+				                                                <td>3,280</td>
+																												<td> </td>
+																											</td>
+			                                            </tr>
+																									<tr>
+																											<td>801 Size1000이상</td>
+																											<td>332</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>901 ProdNo누락</td>
+																											<td>2,289</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>902 loadTimeout누락</td>
+																											<td>321</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>903 tileHeight누락</td>
+																											<td>221</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>904 tileWidth누락</td>
+																											<td>5</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>906 format누락</td>
+																											<td>512</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>907 prefix누락</td>
+																											<td>231</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>908 imgLoc누락</td>
+																											<td>65</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>909 quality누락</td>
+																											<td>40</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>910 isLimitTraget누락</td>
+																											<td>432</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>911 priority누락</td>
+																											<td>321</td>
+																											<td> </td>
+																										</td>
+																									</tr>
+																									<tr>
+																											<td>912 env누락</td>
+																											<td>18</td>
+																											<td> </td>
+																										</td>
+																									</tr>
 
-																												<td>
-																													<span class="datepicker">
-																							            	<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
-																							            	<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
-																							            </span>
-																												</td>
-				                                                <td> 	</td>
-				                                            </tr>
-				                                        </tbody>
-				                                    </table>
-				                                </div>
-				                            </div>
+			                                        </tbody>
+			                                    </table>
+			                                </div>
+			                            </div>
+			                            <!--  //accordion  -->
+																	<div class="center-align">
+																	<td>
+																		<span class="datepicker">
+																			<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
+																			<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
+																		</span>
+
+																	<td>
+																		<span class="datepicker">
+																			<input type="text" id="startDate"  class="size-lg"  placeholder="YYYY.MM.DD" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="" style="width:200px;">
+																			<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');" value="">...</button>
+																		</span>
+																	</td>
+																	</div>
 				                            <!--  //accordion  -->
 																		<div class="reverse">
 																						<form> <!-- form tag 상황에 맞게 사용  -->
