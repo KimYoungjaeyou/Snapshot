@@ -8,7 +8,7 @@ angular.module('ss').directive('ssHeader',function(){
   	'</div>'+
   '<nav>'+
   		'<ul class="gnb">'+
-  			'<li><a ng-click="statusFilter={displayFG:true}"><span>메인</span></a></li>'+
+  			'<li><a href="#/!"><span>메인</span></a></li>'+
   			'<li><a href="trigger.html"><span>트리거 설정</span></a></li>'+
   			'<li><a href="monitoring.html"><span>모니터링</span></a></li>'+
   			'<li><a href="admin.skcc.com/5601"><span> 리포팅</span></a></li>'+

@@ -7,12 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
-		<script src="../assets/angularjs/app.js"></script>
-		<script src="../assets/angularjs/controller.js"></script>
-		<script src="../assets/angularjs/directives.js"></script>
-		<script src="../assets/angularjs/service.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 		<script src="../assets/angularjs/router.js"></script>
 		<script src="../assets/js/vendors/jquery/jquery-1.11.2.js"></script>
 	 	<script src="../assets/js/vendors/jquery/jquery-ui.min.js"></script>
@@ -21,26 +17,39 @@
 		<script src="../fetch/fetch.js"></script>
 		<link rel="stylesheet" href="../assets/css/cloudz.css">
 </head>
-<body ng-app='ss' ng-controller='ssCtrl'>
+<body ng-app='ss'>
 <div class="wrapper">
 	<header>
-		<ss-header></ss-header>
+		<div class="inhead">
+			<h1>
+				<a href="#/!main.html"><span class="invisible">CLOUDZ CONSOLE</span></a>
+			</h1>
+		</div>
+		<nav>
+			<ul class="gnb">
+				<li><a href="#/!main.html"><span> 액션</span></a></li>
+				<li><a href="#/!trigger.html"><span>  트리거 설정</span></a></li>
+				<li><a href="#/!monitoring.html"><span> 모니터링</span></a></li>
+				<li><a href="admin.skcc.com/5601"><span> 리포팅</span></a></li>
+			</ul>
+	  </nav>
 	</header>
 	<div class="container">
- 	  <ss-utils></ss-utils>
-			<ss-locationsarea></ss-locationsarea>
+		<div class="utils">
+    	<div class="reverse"></div>
+    </div>
+			<div class="locations-area">
+				<div class="breadscrumb">
+					<a href="index.html">메인</a>
+				</div>
+			</div>
 				<div class="contents">
 					 <div class="inners">
-						 Show: <input type="checkbox" ng-model="checked"><br />
-								<div class="check-element animate-show-hide" ng-show="checked">
-								 	<ss-main></ss-main>
-								</div>
-										 <!-- <div  ng-repeat="ss in sss | filter:statusFilter">
-						   {{ss.test}}
-							 <div>{{ss.displayFG}}</div>
-					   </div> -->
+						 <div ng-view></div>
 					 </div>
-						 <ss-footer></ss-footer>
+					 	<div class="footer">
+						COPYRIGHTⓒ2018 BY SK HOLDINGS CO., LTD. ALL RIGHT RESERVED
+					 </div>
 				</div>
 	</div>
 </div>
