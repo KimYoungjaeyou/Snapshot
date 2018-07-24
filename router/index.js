@@ -8,7 +8,7 @@ var monitoring = require('./monitoring/monitoring')
 
 //url routing
 router.get('/', function(req,res) {
-	res.render('main.ejs', { 
+	res.render('main.ejs', {
     title : 'test'
   });
 });

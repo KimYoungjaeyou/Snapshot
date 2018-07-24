@@ -1,4 +1,4 @@
-	var oPopup = document.createElement('div'); 
+	var oPopup = document.createElement('div');
 	var PageLoaded;
 	var LogPageLoaded;
 	var PageLoadedCancell;
@@ -42,21 +42,21 @@
           if( !obj || !obj.offsetParent ){
             continue;
           }
-      
+
           // Find the element's offsetTop and offsetLeft relative to the BODY tag.
           objLeft   = obj.offsetLeft;
           objTop    = obj.offsetTop;
           objParent = obj.offsetParent;
-          
+
           while( objParent.tagName.toUpperCase() != "BODY" ){
             objLeft  += objParent.offsetLeft;
             objTop   += objParent.offsetTop;
             objParent = objParent.offsetParent;
           }
-      
+
           objHeight = obj.offsetHeight;
           objWidth = obj.offsetWidth;
-      
+
           if(( overDiv.offsetLeft + overDiv.offsetWidth ) <= objLeft );
           else if(( overDiv.offsetTop + overDiv.offsetHeight + 500) <= objTop );
           else if( overDiv.offsetTop >= ( objTop + objHeight ));
@@ -68,7 +68,7 @@
         }
       }
     }
-     
+
     /*
     * unhides <select> and <applet> objects (for IE only)
     */
@@ -76,10 +76,10 @@
       if( ie ){
         for( var i = 0; i < document.all.tags( elmID ).length; i++ ){
           obj = document.all.tags( elmID )[i];
-              
-          if( !obj || !obj.offsetParent ) 
+
+          if( !obj || !obj.offsetParent )
         	  continue;
-                  
+
           obj.style.visibility = "";
         }
       }
@@ -105,11 +105,11 @@
 			img[i].src = imgDir + imgsrc[i];
 		}
 		document.write ("<div onclick='bShow=true' id='calendar' style='z-index:+999;position:absolute;visibility:hidden;'><table cellspacing='0' width="+((showWeekNumber==1)?250:150)+" style='font-size:13px;border:solid 1px #ccc;' bgcolor='#f9f9f9'><tr style='border-width:1;border-style:solid;border-color:#395d9c;' bgcolor='#F3EFEC'><td><table width='"+((showWeekNumber==1)?248:240)+"'><tr><td style='padding:10px 5px; background:#f9f9f9; font-size:13px;'><font color='#000000'><B><span id='caption'></span></B></font></td><td style='text-align:left; background:#f9f9f9; width:30px;'><a href='javascript:hideCalendar()'><IMG SRC='"+imgDir+"close.png' width='15' height='13' BORDER='0' ALT='Close the Calendar'></a></td></tr></table></td></tr><tr><td style='padding:15px 0 5px 0;' bgcolor=#ffffff><span id='content'></span></td></tr>");
-			
+
 		if (showToday==1){
 			document.write ("<tr><td style='padding:7px 5px; text-align:center; background:#f9f9f9;'><span id='lblToday'></span></td></tr>");
 		}
-	
+
 		document.write ("</table></div><div id='selectYear' style='z-index:+999;position:absolute;visibility:hidden;padding-left:0;'></div><div id='selectMonth' style='z-index:+999;position:absolute;visibility:hidden;padding-left:75px;'></div>");
 	}
 
@@ -146,15 +146,15 @@
 			}
 			// link to year drop-down list
 			sHTML1="<span id='spanYear' style='border-width:0;cursor:pointer' onmouseover='swapImage(\"changeYear\",\"drop2.png\");window.status=\""+selectYearMessage+"\"' onmouseout='swapImage(\"changeYear\",\"drop1.png\");window.status=\"\"' onclick='popUpYear()'></span>&nbsp;";
-			// link to previous month 
+			// link to previous month
 //			sHTML1+="<span id='spanLeft'	style='border-width:0;cursor:pointer' onmouseover='swapImage(\"changeLeft\",\"left2.png\");window.status=\""+scrollLeftMessage+"\"' onclick='javascript:decMonth()' onmouseout='clearInterval(intervalID1);swapImage(\"changeLeft\",\"left1.png\");window.status=\"\"' onmousedown='clearTimeout(timeoutID1);timeoutID1=setTimeout(\"StartDecMonth()\",500)' onmouseup='clearTimeout(timeoutID1);clearInterval(intervalID1)'>&nbsp<IMG id='changeLeft' SRC='"+imgDir+"left1.png' width=10 height=11 BORDER=0>&nbsp</span>&nbsp;";
-			// link to month drop-down list 
+			// link to month drop-down list
 			sHTML1+="<span id='spanMonth' style='padding-left:20px;border-width:0;cursor:pointer'	onmouseover='swapImage(\"changeMonth\",\"drop2.png\");window.status=\""+selectMonthMessage+"\"' onmouseout='swapImage(\"changeMonth\",\"drop1.png\");window.status=\"\"' onclick='popUpMonth()'></span>&nbsp;";
-			// link to next month 
+			// link to next month
 //			sHTML1+="<span id='spanRight' style='border-width:0;cursor:pointer'	onmouseover='swapImage(\"changeRight\",\"right2.png\");window.status=\""+scrollRightMessage+"\"' onmouseout='clearInterval(intervalID1);swapImage(\"changeRight\",\"right1.png\");window.status=\"\"' onclick='incMonth()' onmousedown='clearTimeout(timeoutID1);timeoutID1=setTimeout(\"StartIncMonth()\",500)'	onmouseup='clearTimeout(timeoutID1);clearInterval(intervalID1)'>&nbsp<IMG id='changeRight' SRC='"+imgDir+"right1.png'	width=10 height=11 BORDER=0>&nbsp</span>&nbsp";
-			
+
 			document.getElementById("caption").innerHTML  =	sHTML1;
-	
+
 			bPageLoaded=true;
 		}
 		if (PageLoaded == 0){
@@ -165,12 +165,12 @@
 					fnSetText('hdnLocationData',ParentOpener.frmEvent.hdnLocation.value);
 					fnSetDefaultVal();
 					javascript:__doPostBack('fnGetParentVal','');
-					//Added by  14 MArch 2005 for loading the default values in location pop up 
-					
+					//Added by  14 MArch 2005 for loading the default values in location pop up
+
 				}
 				//End of code
 		}
-		
+
 		if (LogPageLoaded == 0){
 				LogPageLoaded = 1;
 				var ParentOpener = window.dialogArguments;
@@ -179,9 +179,9 @@
 				javascript:__doPostBack('fnGetParentVal','');
 				}
 		}
-		
-		
-		
+
+
+
 	}
 
 	function hideCalendar()	{
@@ -217,7 +217,7 @@
 
 		hideCalendar();
 		ctlToPlaceValue.value =	constructDate(dateSelected,monthSelected,yearSelected);
-		
+
 		if(typeof(OnDateChange) == 'function'){
 			OnDateChange(ctlToPlaceValue);
 		}
@@ -285,10 +285,10 @@
 	function incYear() {
 		for	(var i=0; i<7; i++){
 			newYear	= (i+nStartingYear)+1;
-			if (newYear==yearSelected){ 
-				txtYear =	"&nbsp;<B>"	+ newYear +	"</B>&nbsp;"; 
+			if (newYear==yearSelected){
+				txtYear =	"&nbsp;<B>"	+ newYear +	"</B>&nbsp;";
 			}else{
-				txtYear =	"&nbsp;" + newYear + "&nbsp;"; 
+				txtYear =	"&nbsp;" + newYear + "&nbsp;";
 			}
 			document.getElementById("y"+i).innerHTML = txtYear;
 		}
@@ -299,10 +299,10 @@
 	function decYear() {
 		for	(var i=0; i<7; i++){
 			newYear	= (i+nStartingYear)-1;
-			if (newYear==yearSelected){ 
-				txtYear =	"&nbsp;<B>"	+ newYear +	"</B>&nbsp;"; 
-			}else{ 
-				txtYear =	"&nbsp;" + newYear + "&nbsp;"; 
+			if (newYear==yearSelected){
+				txtYear =	"&nbsp;<B>"	+ newYear +	"</B>&nbsp;";
+			}else{
+				txtYear =	"&nbsp;" + newYear + "&nbsp;";
 			}
 			document.getElementById("y"+i).innerHTML = txtYear;
 		}
@@ -378,7 +378,7 @@
       // L = d4 / 1460
       // d1 = ((d4 - L) mod 365) + L
       // WeekNumber = d1 / 7 + 1
- 
+
       year = n.getFullYear();
       month = n.getMonth() + 1;
       if (startAt == 0) {
@@ -387,7 +387,7 @@
       else {
          day = n.getDate();
       }
- 
+
       a = Math.floor((14-month) / 12);
       y = year + 4800 - a;
       m = month + 12 * a - 3;
@@ -397,7 +397,7 @@
       L = Math.floor(d4 / 1460);
       d1 = ((d4 - L) % 365) + L;
       week = Math.floor(d1/7) + 1;
- 
+
       return week;
    }
 
@@ -419,7 +419,7 @@
 
 		datePointer	= 0;
 		dayPointer = startDate.getDay() - startAt;
-		
+
 		if (dayPointer<0){
 			dayPointer = 6;
 		}
@@ -440,7 +440,7 @@
 			}
 		}
 		sHTML +="</tr><tr>";
-		
+
 		if (showWeekNumber==1){
 			sHTML += "<td align=right>" + WeekNbr(startDate) + "&nbsp;</td>";
 		}
@@ -448,13 +448,13 @@
 		for	( var i=1; i<=dayPointer;i++ ){
 			sHTML += "<td>&nbsp;</td>";
 		}
-	
+
 		for	( var datePointer=1; datePointer<=numDaysInMonth; datePointer++ ){
 			dayPointer++;
 			sHTML += "<td align=right>";
 			sStyle=styleAnchor;
-			if ((datePointer==odateSelected) &&	(monthSelected==omonthSelected)	&& (yearSelected==oyearSelected)){ 
-				sStyle+=styleLightBorder; 
+			if ((datePointer==odateSelected) &&	(monthSelected==omonthSelected)	&& (yearSelected==oyearSelected)){
+				sStyle+=styleLightBorder;
 			}
 
 			sHint = "";
@@ -472,19 +472,19 @@
 
 			dateMessage = "onmousemove='window.status=\""+selectDateMessage.replace("[date]",constructDate(datePointer,monthSelected,yearSelected))+"\"' onmouseout='window.status=\"\"' ";
 
-			if ((datePointer==dateNow)&&(monthSelected==monthNow)&&(yearSelected==yearNow)){ 
+			if ((datePointer==dateNow)&&(monthSelected==monthNow)&&(yearSelected==yearNow)){
 				sHTML += "<b><a "+dateMessage+" title=\"" + sHint + "\" style='"+sStyle+"' href='javascript:dateSelected="+datePointer+";closeCalendar();'><font color=#47C83E>&nbsp;" + datePointer + "</font>&nbsp;</a></b>";
 			}else if(dayPointer % 7 == (startAt * -1)+1){
 				sHTML += "<a "+dateMessage+" title=\"" + sHint + "\" style='"+sStyle+"' href='javascript:dateSelected="+datePointer + ";closeCalendar();'>&nbsp;<font color=#FF0000>" + datePointer + "</font>&nbsp;</a>";
 			}else if(dayPointer % 7 == (startAt * -1)){
 				sHTML += "<a "+dateMessage+" title=\"" + sHint + "\" style='"+sStyle+"' href='javascript:dateSelected="+datePointer + ";closeCalendar();'>&nbsp;<font color=#0054FF>" + datePointer + "</font>&nbsp;</a>";
 			}else{
-				sHTML += "<a "+dateMessage+" title=\"" + sHint + "\" style='"+sStyle+"' href='javascript:dateSelected="+datePointer + ";closeCalendar();'>&nbsp;<font color=#000000>" + datePointer + "&nbsp;</a>"; 
+				sHTML += "<a "+dateMessage+" title=\"" + sHint + "\" style='"+sStyle+"' href='javascript:dateSelected="+datePointer + ";closeCalendar();'>&nbsp;<font color=#000000>" + datePointer + "&nbsp;</a>";
 			}
 
 			sHTML += "";
-			if ((dayPointer+startAt) % 7 == startAt) { 
-				sHTML += "</tr><tr>"; 
+			if ((dayPointer+startAt) % 7 == startAt) {
+				sHTML += "</tr><tr>";
 				if ((showWeekNumber==1)&&(datePointer<numDaysInMonth)){
 					sHTML += "<td align=right>" + (WeekNbr(new Date(yearSelected,monthSelected,datePointer+1))) + "&nbsp;</td>";
 				}
@@ -499,7 +499,7 @@
 	function fnPopUpCalendar(ctl, ctl2, format) {
 		var	leftpos=0;
 		var	toppos=0;
-		
+
 		if (bPageLoaded){
 			if ( crossobj.visibility ==	"hidden" ) {
 				ctlToPlaceValue	= ctl2;
@@ -566,7 +566,7 @@
 					toppos += aTag.offsetTop;
 				} while(aTag.tagName!="BODY");
  //             controlling the position of calendar
- 
+
 				crossobj.left =	fixedX==-1 ? ctl.offsetLeft	+ leftpos + 3 + "px" :	fixedX;
 				crossobj.top = fixedY==-1 ?	ctl.offsetTop +	toppos + ctl.offsetHeight + 5 + "px" :	fixedY;
 				/*
@@ -582,7 +582,7 @@
 				crossobj.visibility=(dom||ie)? "visible" : "show";
 
 				hide_Element( 'SELECT', document.getElementById("calendar") );
-				hide_Element( 'APPLET', document.getElementById("calendar") );			
+				hide_Element( 'APPLET', document.getElementById("calendar") );
 
 				bShow = true;
 			}
@@ -596,22 +596,22 @@
 			ctlNow = ctl;
 		}
 	}
-	
-	document.onkeypress = function hidecal1 () { 
+
+	document.onkeypress = function hidecal1 () {
 		if (event.keyCode==27) {
 			hideCalendar();
 		}
 	};
-	
-	document.onclick = function hidecal2 () { 		
+
+	document.onclick = function hidecal2 () {
 		if (!bShow){
 			hideCalendar();
 		}
 		bShow = false;
 	};
-	
-	
-	window.onload = init;	
+
+
+	window.onload = init;
 
 function fnNewCalendar(imageId,textId,format){
 	fnPopUpCalendar(imageId, textId, format);
