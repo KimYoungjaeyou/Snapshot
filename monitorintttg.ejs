@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+		<script src="../assets/js/ui.js"></script>
+		<script src="../assets/js/calendar.js"></script>
+		<script src="../assets/js/elasticsearch.js"></script>
+		<link rel="stylesheet" href="../assets/css/cloudz.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="inhead">
+				<h1>
+					<a href="/main"><span class="invisible">CLOUDZ CONSOLE</span></a>
+				</h1>
+			</div>
+			<nav>
+				<ul class="gnb">
+					<li><a href="/monitoring"><span> 모니터링</span></a></li>
+					<li><a href="/monitoring"><span>Snapshot</span></a></li>
+					<li><a href="/icos"><span>ICOS</span></a></li>
+					<li><a href="http://169.56.88.132:5601"><span> Kibana</span></a></li>
+				</ul>
+		  </nav>
+		</header>
+		<div class="container">
+			<!-- <div class="utils">
+	    	<div class="reverse"></div>
+	    </div> -->
+				<!-- <div class="locations-area">
+					<div class="breadscrumb">
+						<a href="모니터링">모니터링</a>
+					</div>
+				</div> -->
+					<div class="contents">
+						 <div class="inners">
+							 <!-- <div class="top-area">
+
+					</div> -->
+					<div class="tabs">
+						<ul class="tabType1">
+							<li style="width:50%;"><a href="#tabs1-1" class="tab-triggers active"><span>Snapshot 요청조회</span></a></li>
+							<li style="width:50%;"><a href="#tabs1-2" class="tab-triggers"><span>Snapshot 처리조회</span></a></li>
+						</ul>
+
+						<div id="tabs1-1" class="tab-contents active">
+								<form class="essearch" action="" method="post">
+										<div class="center-align">
+										<td>
+											<span class="datepicker">
+												<input type="text" name="prdstartDate"  class="size-lg"  placeholder="YYYY-MM-DD" onclick="fnPopUpCalendar(prdstartDate,prdstartDate,'yyyy-mm-dd');" value="" style="width:200px;">
+												<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(prdstartDate,prdstartDate,'yyyy-mm-dd');" value="">...</button>
+											</span>
+										</td>
+										<span>~</span>
+										<td>
+											<span class="datepicker" >
+												<input type="text" name="fromDate"  class="size-lg"  placeholder="YYYY-MM-DD" onclick="fnPopUpCalendar(fromDate,fromDate,'yyyy-mm-dd');" value="" style="width:200px;">
+												<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(fromDate,fromDate,'yyyy-mm-dd');" value="">...</button>
+											</span>
+										</td>
+											<span>
+											<button type="summit" class="btn-search" id="api_count_search" style="position:absolute;width: 38px;height: 38px;font-size: 20px;border:none;color: #fff;background-color: #ccc;"><i class="fa fa-search" style="vertical-align:text-top;"></i></button>
+											</span>
+										</div>
+								</form>
+									<div class="accordion">
+								<div class="btn-block btn-icons-sm">
+										<button type="button" data-toggle="collapse" class="btn bg-white"><span class="minus">plus</span></button>
+										<span class="title">Snapshot 요청 성공/실패 Summary</span>
+								</div>
+								<div class="accordion-content">
+									<table class="type-vertical">
+													<colgroup>
+														<col style="width:20%">
+														<col style="width:20%">
+														<col style="width:20%">
+														<col style="width:20%">
+														<col style="width:20%">
+														<col style="width:20%">
+												</colgroup>
+												<thead>
+														<tr>
+																<th>요청 구분</th>
+																<th>총 요청 건수</th>
+																<th>총 요청 성공 건수</th>
+																<th>성공 비율</th>
+																<th>총 요청 실패 건수</th>
+																<th>실패 비율</th>
+														</tr>
+													</thead>
+													<tbody>
+															<tr>
+																		<td>생성 요청</td>
+																		<td id="api_create_count"></td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+															</tr>
+															<tr>
+																		<td>조회 요청</td>
+																		<td id="api_result_count"></td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+															</tr>
+															<tr>
+																		<td>삭제 요청</td>
+																		<td id="api_delete_count"></td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+															</tr>
+													</tbody>
+											</table>
+											<br>
+									</div>
+							</div>
+							<!-- accordion -->
+							<div class="accordion">
+								<div class="btn-block btn-icons-sm">
+										<button type="button" data-toggle="collapse" class="btn bg-white"><span class="minus">plus</span></button>
+										<span class="title">Snapshot 요청 실패 Case</span>
+								</div>
+								<div class="accordion-content">
+									<table class="type-vertical">
+													<colgroup>
+															<col style="width:30%">
+															<col style="width:30%">
+															<col style="width:30%">
+													</colgroup>
+													<thead>
+															<tr>
+																	<th>검색 구분</th>
+																	<th>요청 실패구분</th>
+																	<th>건수</th>
+															</tr>
+													</thead>
+													<tbody>
+															<tr>
+																		<td>생성 요청</td>
+																		<td id="api_create_errtype1_count">필수 값 누락</td>
+																		<td> </td>
+															</tr>
+															<tr>
+																	<td>생성 요청</td>
+																	<td id="api_create_errtype2_count">시스템 오류</td>
+																	<td> </td>
+															</tr>
+															<tr>
+																	<td>조회 요청</td>
+																	<td id="api_result_errtype1_count">필수 값 누락</td>
+																	<td> </td>
+															</tr>
+															<tr>
+																	<td>조회 요청</td>
+																	<td id="api_result_errtype2_count">시스템 오류</td>
+																	<td> </td>
+															</tr>
+															<tr>
+																	<td>삭제 요청</td>
+																	<td id="api_delete_errtype1_count">필수 값 누락</td>
+																	<td> </td>
+															</tr>
+															<tr>
+																	<td>삭제 요청</td>
+																	<td id="api_delete_errtype2_count">시스템 오류</td>
+																	<td> </td>
+															</tr>
+													</tbody>
+											</table>
+								</div>
+							</div>
+							<!-- accordion -->
+	          </div>
+						<!-- tabs1-1 -->
+						<div id="tabs1-2" class="tab-contents">
+							<form class="essearch" action="" method="post">
+									<div class="center-align">
+									<td>
+										<span class="datepicker">
+											<input type="text" name="prdstartDate"  class="size-lg"  placeholder="YYYY-MM-DD" onclick="fnPopUpCalendar(prdstartDate,prdstartDate,'yyyy-mm-dd');" value="" style="width:200px;">
+											<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(prdstartDate,prdstartDate,'yyyy-mm-dd');" value="">...</button>
+										</span>
+									</td>
+									<span>~</span>
+									<td>
+										<span class="datepicker" >
+											<input type="text" name="fromDate"  class="size-lg"  placeholder="YYYY-MM-DD" onclick="fnPopUpCalendar(fromDate,fromDate,'yyyy-mm-dd');" value="" style="width:200px;">
+											<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(fromDate,fromDate,'yyyy-mm-dd');" value="">...</button>
+										</span>
+									</td>
+										<span>
+										<button type="summit" class="btn-search" id="prd_count_search" style="position:absolute;width: 38px;height: 38px;font-size: 20px;border:none;color: #fff;background-color: #ccc;"><i class="fa fa-search" style="vertical-align:text-top;"></i></button>
+										</span>
+									</div>
+							</form>
+							<div class="accordion">
+								<div class="btn-block btn-icons-sm">
+										<button type="button" data-toggle="collapse" class="btn bg-white"><span class="minus">plus</span></button>
+										<span class="title">Snapshot 처리 성공/실패 Summary</span>
+								</div>
+								<div class="accordion-content">
+									<table class="type-vertical">
+													<colgroup>
+															<col style="width:20%">
+															<col style="width:20%">
+															<col style="width:20%">
+															<col style="width:20%">
+															<col style="width:20%">
+															<col style="width:20%">
+													</colgroup>
+													<thead>
+															<tr>
+																	<th>처리 구분</th>
+																	<th>총 처리 건수</th>
+																	<th>총 처리 성공 건수</th>
+																	<th>성공 비율</th>
+																	<th>총 요청 실패 건수</th>
+																	<th>실패 비율</th>
+															</tr>
+													</thead>
+													<tbody>
+															<tr>
+																		<td>생성</td>
+																		<td id="ss_create_count"></td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+															</tr>
+															<tr>
+																		<td>삭제</td>
+																		<td id="ss_delete_count"></td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+																		<td> </td>
+															</tr>
+													</tbody>
+											</table>
+											<br>
+									</div>
+							</div>
+							<!-- accordion -->
+							<div class="accordion">
+								<div class="btn-block btn-icons-sm">
+										<button type="button" data-toggle="collapse" class="btn bg-white"><span class="minus">plus</span></button>
+										<span class="title">Snapshot 처리 실패 Case</span>
+								</div>
+								<div class="accordion-content">
+									<table class="type-vertical">
+													<colgroup>
+															<col style="width:30%">
+															<col style="width:30%">
+															<col style="width:30%">
+													</colgroup>
+													<thead>
+															<tr>
+																	<th>처리 구분</th>
+																	<th>처리 실패내용</th>
+																	<th>건수</th>
+															</tr>
+													</thead>
+													<tbody style="">
+															<tr>
+																		<td>생성</td>
+																		<td id="ss_create_errtype1_count" style="text-align: left;">유효하지 않은 페이지(DIV:ID:DetailWrapper) 미존재</td>
+																		<td> </td>
+															</tr>
+															<tr>
+																	<td>생성</td>
+																	<td id="ss_create_errtype2_count" style="text-align: left;">유효하지 않은 페이지(폭 또는 길이가 0)</td>
+																	<td> </td>
+															</tr>
+															<tr>
+																	<td>생성</td>
+																	<td id="ss_create_errtype3_count" style="text-align: left;">시스템 오류</td>
+																	<td> </td>
+															</tr>
+															<tr>
+																	<td>생성</td>
+																	<td id="ss_create_errtype4_count" style="text-align: left;">페이지 로딩 타임 아웃</td>
+																	<td> </td>
+															</tr>
+															<tr>
+																	<td>생성</td>
+																	<td id="ss_create_errtype5_count" style="text-align: left;">백화현상</td>
+																	<td> </td>
+															</tr>
+													</tbody>
+											</table>
+								</div>
+							</div>
+						</div>
+						<!-- tabs1-2 -->
+
+
+		</div>
+
+	</div>
+		<!-- /container -->
+	</div>
+	<!-- /contents -->
+	<!-- /wrapper -->
+	<!-- footer -->
+	<!-- /footer -->
+	<!-- script -->
+	</div>
+	</div>
+<!-- /contents -->
+<!-- /wrapper -->
+<!-- footer -->
+<div class="footer">
+	COPYRIGHTⓒ2018 BY SK HOLDINGS CO., LTD. ALL RIGHT RESERVED
+</div>
+<!-- /footer -->
+<!-- script -->
+
+<script type="text/javascript">
+
+$(".accordion .btn-block > button[data-toggle='collapse']").on('click',function(e){
+$(this).find('span').toggleClass('plus minus');
+
+		var cont = $(this).parent().next();
+		cont.slideToggle("300");
+});
+
+
+
+document.querySelector('#api_count_search').addEventListener('click', function(e) {
+				e.preventDefault();
+		var month = document.getElementsByName('apistartDate')[0].value.substr(0,7)
+
+	$.post("http://localhost:3005/api_create_count",
+		{ datefg : month },
+		function(data, status){
+			 $("#api_create_count").html(data.count);
+		})
+
+	$.post("http://localhost:3005/api_result_count",
+		{ datefg : month },
+		function(data, status){
+		 	 $("#api_result_count").html(data.count);
+		})
+
+	$.post("http://localhost:3005/api_delete_count",
+		{ datefg : month },
+		function(data, status){
+		   $("#api_delete_count").html(data.count);
+		})
+})
+
+
+document.querySelector('#prd_count_search').addEventListener('click', function(e) {
+				e.preventDefault();
+		var month = document.getElementsByName('prdstartDate')[0].value.substr(0,7)
+		console.log(month)
+
+	$.post("http://localhost:3005/prd_create_count",
+		{ datefg : month },
+		function(data, status){
+			 $("#prd_create_count").html(data.count);
+		})
+
+	$.post("http://localhost:3005/prd_result_count",
+		{ datefg : month },
+		function(data, status){
+		 	 $("#prd_result_count").html(data.count);
+		})
+
+	$.post("http://localhost:3005/prd_delete_count",
+		{ datefg : month },
+		function(data, status){
+		   $("#prd_delete_count").html(data.count);
+		})
+})
+
+
+document.querySelector('#err_count_search').addEventListener('click', function(e) {
+				e.preventDefault();
+		var month = document.getElementsByName('errstartDate')[0].value.substr(0,7)
+		console.log(month)
+
+
+		$.post("http://localhost:3005/999error",
+			{ datefg : month },
+			function(data, status){
+				 $("#999error").html(data.count);
+			})
+			$.post("http://localhost:3005/800error",
+				{ datefg : month },
+				function(data, status){
+					 $("#800error").html(data.count);
+				})
+			$.post("http://localhost:3005/801error",
+				{ datefg : month },
+				function(data, status){
+					 $("#801error").html(data.count);
+				})
+				$.post("http://localhost:3005/901error",
+					{ datefg : month },
+					function(data, status){
+						 $("#901error").html(data.count);
+					})
+					$.post("http://localhost:3005/902error",
+						{ datefg : month },
+						function(data, status){
+							 $("#902error").html(data.count);
+						})
+						$.post("http://localhost:3005/903error",
+							{ datefg : month },
+							function(data, status){
+								 $("#903error").html(data.count);
+							})
+							$.post("http://localhost:3005/904error",
+								{ datefg : month },
+								function(data, status){
+									 $("#904error").html(data.count);
+								})
+								$.post("http://localhost:3005/906error",
+									{ datefg : month },
+									function(data, status){
+										 $("#906error").html(data.count);
+									})
+									$.post("http://localhost:3005/907error",
+										{ datefg : month },
+										function(data, status){
+											 $("#907error").html(data.count);
+										})
+										$.post("http://localhost:3005/908error",
+											{ datefg : month },
+											function(data, status){
+												 $("#908error").html(data.count);
+											})
+
+											$.post("http://localhost:3005/909error",
+												{ datefg : month },
+												function(data, status){
+													 $("#909error").html(data.count);
+												})
+												$.post("http://localhost:3005/910error",
+													{ datefg : month },
+													function(data, status){
+														 $("#910error").html(data.count);
+													})
+														$.post("http://localhost:3005/911error",
+														{ datefg : month },
+														function(data, status){
+															 $("#911error").html(data.count);
+														})
+
+														$.post("http://localhost:3005/912error",
+														{ datefg : month },
+														function(data, status){
+															 $("#912error").html(data.count);
+														})
+
+})
+
+
+
+
+
+
+
+//
+//
+// 	var startDate = document.getElementsByName('startDate')[0].value
+// 	var fromDate = document.getElementsByName('fromDate')[0].value;
+// 	// var fd = new Date(fromDate)
+// 	// for (var sd = new Date(startDate); sd <= fd; sd.setDate(sd.getDate() + 1)){
+// 	// 	var datefg = formatDate(sd)
+// 		sendAjax('http://localhost:3005/api_create_count', {'startDate' : startDate, 'fromDate' : fromDate});
+// 		sendAjax('http://localhost:3005/api_delete_count', {'startDate' : startDate, 'fromDate' : fromDate});
+// 		sendAjax('http://localhost:3005/api_result_count', {'startDate' : startDate, 'fromDate' : fromDate});
+// 	// }
+// // 	setTimeout(function() {
+// // 		var fd = new Date(fromDate)
+// // 		for (var sd = new Date(startDate); sd <= fd; sd.setDate(sd.getDate() + 1)){
+// // 				var res = sd.toISOString().slice(0,10).replace(/-/g,"");
+// // 				var csum = 0
+// // 				var rsum = 0
+// // 				var dsum = 0
+// // 				csum = csum+parseInt(JSON.stringify($("#create_count").data(res)))
+// // 				rsum = rsum+parseInt(JSON.stringify($("#result_count").data(res)))
+// // 				dsum = dsum+parseInt(JSON.stringify($("#delete_count").data(res)))
+// // 		}
+// // 			//$("#create_count").date("sum",sum)
+// // 			console.log("csum"+csum)
+// // 		$("#create_count").text(csum)
+// // 		$("#result_count").text(rsum)
+// // 		$("#delete_count").text(dsum)
+// // }, 5000) ;
+//   // sendAjax('http://localhost:3005/api_result_count', {'startDate' : startDate, 'fromDate' : fromDate});
+// 	// sendAjax('http://localhost:3005/api_delete_count', {'startDate' : startDate, 'fromDate' : fromDate});
+// 							// sendAjax('http://localhost:3005/api_called_count', {'startDate' : startDate, 'fromDate' : fromDate}
+// 							// 			);
+// })
+// // function savedata(name,key,value){
+// // 		if(name=="create"){
+// // 			$("#create_count").data(key,value)
+// // 			// console.log("creategdgd" + JSON.stringify($("#create_count").data()))
+// // 		}else if(name=="delete"){
+// // 			$("#delete_count").data(key,value)
+// // 			// console.log("deletegdgd" + JSON.stringify($("#delete_count").data()))
+// // 		}else if(name=="result"){
+// // 			$("#result_count").data(key,value)
+// // 			console.log("resultgdgd")
+// // 		}
+// // }
+// function sendAjax(url, data){
+// 	data = JSON.stringify(data);
+// 	var xhr = new XMLHttpRequest();
+// 	xhr.open('POST', url);
+// 	xhr.setRequestHeader('Content-Type', "application/json");
+// 	xhr.send(data);
+// 		xhr.addEventListener('load', function() {
+// 			var result = JSON.parse(xhr.responseText);
+// 			if(result.status==200){
+// 			  savedata(result.api,result.datefg,result.count)
+// 			}
+// 			// var result = JSON.parse(xhr.responseText);
+// 			// var resultDiv = document.querySelector("#create_count")
+// 		  // $("#create_count").data("ccount",parseInt(result.count)+$("create_count").data("ccount") );
+// 			});
+// 			// data(Key)로 저장된 data읽기
+// 			// var name = $("#create_count").data("ccount");
+// 			// console.log(name)
+// 			//
+// 			//
+// 			// $("#create_count").text(name);
+// 			//resultDiv.innerHTML = result.count
+// 				// if(result.ccount){
+// 				// 	var resultDiv = document.querySelector(".create_count");
+// 				// 	resultDiv.innerHTML = result.ccount
+// 				// }else	if(result.scount){
+// 				// 	var resultDiv = document.querySelector(".result_count");
+// 				// 	resultDiv.innerHTML = result.scount
+// 				// }else	if(result.dcount){
+// 				// 	var resultDiv = document.querySelector(".delete_count");
+// 				// 	resultDiv.innerHTML = result.dcount
+// 				// }
+// 	// xhr.addEventListener('load', function() {
+// 	// 	var result = JSON.parse(xhr.responseText);
+// 	// 	console.log(result.count1)
+// 	// 					var resultDiv = document.querySelector(".result");
+// 	//
+// 	//
+// 	// 							resultDiv.innerHTML = result.count
+// 	//
+// 	// });
+
+</script>
+<!-- /script -->
+
+
+</body>
+</html>
