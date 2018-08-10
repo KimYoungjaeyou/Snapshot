@@ -29,7 +29,7 @@
 	var	dateNow	 = today.getDate();
 	var	monthNow = today.getMonth();
 	var	yearNow	 = today.getFullYear();
-	var	imgsrc = new Array("down.png","drop2.png","arrow.png","left2.png","right1.png","right2.png");
+	var	imgsrc = new Array("down.png","drop2.png","left2.png","right1.png","right2.png");
 	var	img	= new Array();
 
 	var bShow = false;
