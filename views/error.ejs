@@ -302,6 +302,28 @@
 				<div><img src="../assets/img/ajax-loader.gif" alt="Loading..." /></div>
 			</div>
 		</div>
+    <!-- layer popup -->
+		<div id="" class="layers" style="display: block;">
+			<div class="inners size-lg">
+				<div class="layer-head">에러</div>
+				<div class="layer-contents">
+					<div class="message-area warning">
+						<div class="message">
+							<span class="icon">
+								<i class="fa fa-exclamation-triangle"></i>
+							</span>
+							<p><%= task_name %> 처리 중 오류가 발생하였습니다.</p>
+							<span class="dec"><%= error_msg %>(error_code : <%= error_code %>)</span>
+						</div>
+					</div>
+				</div>
+				<div class="layer-footer">
+					<button type="button" class="btn size-lg bg-bombay">확인</button>
+				</div>
+				<div class="layer-close"><button type="button" class="btn actions close"><span class="invisible">Close</span></button></div>
+			</div>
+		</div>
+		<!--/ layer popup -->
 	</div>
 		<!-- /container -->
 	</div>
