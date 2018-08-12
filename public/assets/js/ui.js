@@ -32,7 +32,6 @@ $(document).ready(function() { // ready function start
 	// select
 	basicSelect();
 	designSelect();
-//	userSelect();
 
 }); // ready function end
 
@@ -63,7 +62,7 @@ function basicSelect() {
 	});
 }
 function designSelect() {
-	var selects  = $('.select'),
+	var selects  = $('.select.type-layer'),
 			triggers = selects.children('.trigger'),
 			targets  = selects.children('.target'),
 			labels   = targets.find('label');
@@ -74,14 +73,14 @@ function designSelect() {
 	triggers.on('click', function(event) {
 		event.preventDefault();
 
-		$(this).parents('.select').toggleClass('active');
+		$(this).parents('.select.type-layer').toggleClass('active');
 	});
 	labels.on('click', function() {
 		var selected = $(this).text();
 
 		$(this).addClass('selected').parents('li').siblings().children('label').removeClass('selected');
-		$(this).parents('.select').children('.trigger').find('span').text(selected);
-		$(this).parents('.select').removeClass('active');
+		$(this).parents('.select.type-layer').children('.trigger').find('span').text(selected);
+		$(this).parents('.select.type-layer').removeClass('active');
 	});
 }
 
