@@ -6,13 +6,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+	<script src="../assets/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 		<script src="../assets/js/ui.js"></script>
 		<script src="../assets/js/calendar.js"></script>
 		<script src="../assets/js/snapshot.js"></script>
 		<link rel="stylesheet" href="../assets/css/cloudz.css">
 </head>
 <body>
+	<!-- <input type="text" id="api_startdt1" name="api_startdt1"  class="size-lg" autocomplete="off" placeholder="YYYY-MM-DD" value="" style="width:200px;">
+	<input type="text" id="api_enddt1" name="api_enddt1"  class="size-lg" autocomplete="off" placeholder="YYYY-MM-DD" value="" style="width:200px;"> -->
 	<div class="wrapper">
 		<header>
 			<div class="inhead">
@@ -148,21 +151,15 @@
 											</table>
 								</div>
 							</div>
-							<form>
+								<form>
 									<div class="center-align">
-									<td>
-										<span class="datepicker">
-											<input type="text" id="api_startdt" name="prdstartDate"  class="size-lg"  placeholder="YYYY-MM-DD" onclick="fnPopUpCalendar(prdstartDate,prdstartDate,'yyyy-mm-dd');" value="" style="width:200px;">
-											<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(prdstartDate,prdstartDate,'yyyy-mm-dd');" value="">...</button>
-										</span>
-									</td>
-									<span>~</span>
-									<td>
-										<span class="datepicker" >
-											<input type="text" id="api_enddt" name="fromDate"  class="size-lg"  placeholder="YYYY-MM-DD" onclick="fnPopUpCalendar(fromDate,fromDate,'yyyy-mm-dd');" value="" style="width:200px;">
-											<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(fromDate,fromDate,'yyyy-mm-dd');" value="">...</button>
-										</span>
-									</td>
+										<td>
+												<input type="text" id="api_startdt" name="prdstartDate"  class="size-lg" autocomplete="off" value="" disabled>
+										</td>
+										<span>~</span>
+										<td>
+												<input type="text" id="api_enddt" name="fromDate"  class="size-lg" autocomplete="off" value="" disabled>
+										</td>
 										<span>
 											<button type="summit" class="btn-search" id="api_count_search" style="position:absolute;width: 38px;height: 38px;font-size: 25px;border:none;color: #fff;background-color: #ccc;cursor: pointer;"><i class="fa fa-search" style="vertical-align:Baseline;"></i></button>
 										</span>
@@ -274,24 +271,18 @@
 								</div>
 							</div><!-- accordion -->
 							<form>
-									<div class="center-align">
+								<div class="center-align">
 									<td>
-										<span class="datepicker">
-											<input type="text" id="ss_startdt" name="prdstartDate"  class="size-lg"  placeholder="YYYY-MM-DD" onclick="fnPopUpCalendar(prdstartDate,prdstartDate,'yyyy-mm-dd');" value="" style="width:200px;">
-											<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(prdstartDate,prdstartDate,'yyyy-mm-dd');" value="">...</button>
-										</span>
+											<input type="text" id="ss_startdt" name="prdstartDate"  class="size-lg" autocomplete="off" value="" disabled>
 									</td>
 									<span>~</span>
 									<td>
-										<span class="datepicker" >
-											<input type="text" id="ss_enddt" name="fromDate"  class="size-lg"  placeholder="YYYY-MM-DD" onclick="fnPopUpCalendar(fromDate,fromDate,'yyyy-mm-dd');" value="" style="width:200px;">
-											<button type="button" class="btn bg-white ui-datepicker-trigger" onclick="fnPopUpCalendar(fromDate,fromDate,'yyyy-mm-dd');" value="">...</button>
-										</span>
+											<input type="text" id="ss_enddt" name="fromDate"  class="size-lg" autocomplete="off" value="" disabled>
 									</td>
-										<span>
-											<button type="summit" class="btn-search" id="ss_count_search" style="position:absolute;width: 38px;height: 38px;font-size: 25px;border:none;color: #fff;background-color: #ccc;cursor: pointer;"><i class="fa fa-search" style="vertical-align:Baseline;"></i></button>
-										</span>
-									</div>
+									<span>
+										<button type="summit" class="btn-search" id="ss_count_search" style="position:absolute;width: 38px;height: 38px;font-size: 25px;border:none;color: #fff;background-color: #ccc;cursor: pointer;"><i class="fa fa-search" style="vertical-align:Baseline;"></i></button>
+									</span>
+								</div>
 							</form>
 						</div>
 						<!-- tabs1-2 -->
@@ -302,16 +293,37 @@
 				<div><img src="../assets/img/ajax-loader.gif" alt="Loading..." /></div>
 			</div>
 		</div>
+
 	</div>
-		<!-- /container -->
+		<div class="display-none" id="error_handle">
+			<div class="layers " style="display: block;">
+				<div class="inners size-lg">
+					<div class="layer-head">에러</div>
+					<div class="layer-contents">
+						<div class="message-area warning">
+							<div class="message"><span class="icon"><i class="fa fa-exclamation-triangle"></i></span>
+								<p>조회 중 오류가 발생하였습니다.</p><span class="dec">날짜를 재 셋팅 해 주십시오</span>
+							</div>
+						</div>
+					</div>
+					<div class="layer-footer"><button type="button" class="btn size-lg bg-bombay" id="error_handle2">확인</button>
+					</div>
+					<div class="layer-close">
+						<button type="button" class="btn actions close" id="error_handle3">
+							<span class="invisible">Close</span>
+						</button></div>
+				</div>
+			</div>
+		</div>
 	</div>
+	<!-- /container -->
 	<!-- /contents -->
 	<!-- /wrapper -->
 	<!-- footer -->
 	<!-- /footer -->
 	<!-- script -->
 	</div>
-	</div>
+
 <!-- /contents -->
 <!-- /wrapper -->
 <!-- footer -->
